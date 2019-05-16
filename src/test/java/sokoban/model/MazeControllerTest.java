@@ -75,7 +75,6 @@ public class MazeControllerTest {
 
 
 
-        assertDoesNotThrow(() -> MazeController.draw(2));
     }
 
 }

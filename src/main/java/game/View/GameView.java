@@ -54,10 +54,14 @@ public class GameView extends Application {
 
         Button load_button = new Button("LOAD");
         load_button.setMinSize(GameController.getButtonWidth(), GameController.getButtonHeight());
-        load_button.setOnMouseClicked(actionEvent -> {
-            GameController.getMain_root().getChildren().clear();
-            MenuController.display(loadMenu);
-        });
+        load_button.setDisable(true);
+        if (GameController.isHighscore_exists()) {
+            load_button.setDisable(false);
+            load_button.setOnMouseClicked(actionEvent -> {
+                GameController.getMain_root().getChildren().clear();
+                MenuController.display(loadMenu);
+            });
+        }
 
         Button score_button = new Button("HIGHSCORE");
         score_button.setMinSize(GameController.getButtonWidth(), GameController.getButtonHeight());
