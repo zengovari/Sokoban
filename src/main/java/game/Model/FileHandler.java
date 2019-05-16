@@ -72,7 +72,7 @@ public class FileHandler {
             Path workingDirectory = FileSystems.getDefault().getPath("").toAbsolutePath();
             path = workingDirectory.toString() + File.separator + "data" + File.separator;
         } catch (Exception e) {
-            log.error(e.toString());
+            log.error("Couldn't find working directory");
         }
 
         File directory = new File(path);
@@ -86,8 +86,6 @@ public class FileHandler {
             if (Files.notExists(dest)) {
                 Files.createFile(Paths.get(path));
                 log.info("File {} created", path);
-            } else {
-                log.info("{} already exists", path);
             }
         } catch (Exception e) {
             log.error("Something went wrong while creating the data.json file..");
@@ -114,7 +112,7 @@ public class FileHandler {
                 JsonArray jsonArray = jsonObject.getAsJsonArray("Scoreboard");
                 scoreBoards = gson.fromJson(jsonArray, ScoreBoard[].class);
             } catch (Exception e) {
-                log.error("JsonArray could not be created");
+                log.info("JsonArray could not be created");
             }
 
 
